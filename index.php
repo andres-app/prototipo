@@ -356,12 +356,75 @@ endif; ?>
                 </div>
             <?php
             } elseif ($page == 'politicas') { ?>
-                <h1 class="text-2xl font-bold text-indigo-900 mb-4">Políticas y Documentos</h1>
-                <div class="bg-white p-6 rounded-xl shadow-md">
-                    <h2 class="font-bold text-lg mb-2">Política de Seguridad de la Información</h2>
-                    <p class="mb-4">Todos los colaboradores de ETNA deben garantizar la confidencialidad, integridad y disponibilidad de la información, cumpliendo las directrices del SGSI y reportando incidentes al área de TI.</p>
-                    <h2 class="font-bold text-lg mb-2">Política de Control de Acceso</h2>
-                    <p>El acceso a sistemas y datos de ETNA se concede bajo el principio de menor privilegio, utilizando autenticación robusta y con gestión inmediata de altas/bajas.</p>
+                <h1 class="text-2xl font-bold text-indigo-900 mb-4 flex items-center gap-2">
+                    <svg class="w-7 h-7 text-indigo-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M8 17l4 4 4-4m-4-5v9" />
+                        <path d="M20 12V8a2 2 0 0 0-2-2h-4V4a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h7" />
+                    </svg>
+                    Políticas y Documentos
+                </h1>
+                <div id="policies-accordion"
+                    class="bg-white rounded-2xl shadow-xl p-4 space-y-3 max-w-5xl mx-auto">
+
+                    <!-- POLÍTICA 1 -->
+                    <div class="policy-item group bg-white rounded-xl transition-shadow duration-300">
+                        <button type="button"
+                            class="policy-toggle flex items-center w-full justify-between px-6 py-4 text-left font-bold text-lg text-indigo-800 rounded-xl focus:outline-none group-hover:bg-indigo-50 border-2 border-transparent transition-all duration-300">
+                            <span class="flex items-center gap-2">
+                                <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M12 4v16m8-8H4" />
+                                </svg>
+                                Política de Seguridad de la Información
+                            </span>
+                            <svg class="w-6 h-6 transition-transform duration-500 ease-in-out text-indigo-400" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 14l-6-6h12l-6 6z" clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                        <div class="policy-content overflow-hidden max-h-0 opacity-0 transition-all duration-500 px-8">
+                            <div class="pt-2 pb-5 text-gray-800 text-base leading-relaxed">
+                                En ETNA, todos los colaboradores tienen la responsabilidad de proteger la <span class="font-bold text-indigo-700">confidencialidad</span>, <span class="font-bold text-indigo-700">integridad</span> y <span class="font-bold text-indigo-700">disponibilidad</span> de la información.<br>
+                                Es obligatorio cumplir con las directrices del SGSI, participar en capacitaciones y reportar cualquier incidente al área de TI para una gestión oportuna y segura.
+                                <div class="mt-4">
+                                    <a href="#" class="text-indigo-600 font-semibold hover:underline flex items-center gap-1">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                            <path d="M13 16h-1v-4h-1m2-4h.01M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z" />
+                                        </svg>
+                                        Ver documento PDF
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- POLÍTICA 2 -->
+                    <div class="policy-item group bg-white rounded-xl transition-shadow duration-300">
+                        <button type="button"
+                            class="policy-toggle flex items-center w-full justify-between px-6 py-4 text-left font-bold text-lg text-indigo-800 rounded-xl focus:outline-none group-hover:bg-yellow-50 border-2 border-transparent transition-all duration-300">
+                            <span class="flex items-center gap-2">
+                                <svg class="w-6 h-6 text-yellow-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <rect x="3" y="8" width="18" height="13" rx="2" />
+                                    <path d="M16 2v4M8 2v4M4 10h16" />
+                                </svg>
+                                Política de Control de Acceso
+                            </span>
+                            <svg class="w-6 h-6 transition-transform duration-500 ease-in-out text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 14l-6-6h12l-6 6z" clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                        <div class="policy-content overflow-hidden max-h-0 opacity-0 transition-all duration-500 px-8">
+                            <div class="pt-2 pb-5 text-gray-800 text-base leading-relaxed">
+                                El acceso a sistemas y datos se gestiona bajo el <span class="font-bold text-indigo-700">principio de menor privilegio</span>, usando autenticación robusta (MFA) y procedimientos formales para altas y bajas de usuarios. La vigilancia y auditoría periódica son esenciales para garantizar la seguridad y trazabilidad en todo momento.
+                                <div class="mt-4">
+                                    <a href="#" class="text-indigo-600 font-semibold hover:underline flex items-center gap-1">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                            <path d="M13 16h-1v-4h-1m2-4h.01M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z" />
+                                        </svg>
+                                        Ver documento PDF
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             <?php
             } elseif ($page == 'usuarios') { ?>
@@ -546,11 +609,34 @@ endif; ?>
                 }
             });
         });
+
+        // Accordion: Solo uno abierto y animación visual
+        document.querySelectorAll('#policies-accordion .policy-toggle').forEach((btn, idx, btns) => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('#policies-accordion .policy-item').forEach((item, i) => {
+                    const content = item.querySelector('.policy-content');
+                    const arrow = item.querySelector('svg:last-child');
+                    if (i === idx) {
+                        // Activar visualmente
+                        btn.classList.add('border-indigo-400', 'bg-indigo-50', 'shadow-lg');
+                        content.classList.remove('max-h-0', 'opacity-0');
+                        content.classList.add('max-h-[500px]', 'opacity-100');
+                        arrow.classList.add('rotate-180', 'text-indigo-600');
+                        item.classList.add('ring-2', 'ring-indigo-100');
+                    } else {
+                        // Desactivar visualmente
+                        btn.classList.remove('border-indigo-400', 'bg-indigo-50', 'shadow-lg');
+                        content.classList.add('max-h-0', 'opacity-0');
+                        content.classList.remove('max-h-[500px]', 'opacity-100');
+                        arrow.classList.remove('rotate-180', 'text-indigo-600');
+                        item.classList.remove('ring-2', 'ring-indigo-100');
+                    }
+                });
+            });
+        });
+        // Abre la primera al cargar
+        setTimeout(() => document.querySelector('#policies-accordion .policy-toggle').click(), 50);
     </script>
-
-
-
-
 </body>
 
 </html>
