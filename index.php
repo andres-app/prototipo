@@ -95,22 +95,28 @@ endif; ?>
         </div>
         <!-- Usuario/derecha -->
         <div class="relative flex items-center gap-2">
-            <svg class="w-7 h-7 text-indigo-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <circle cx="12" cy="8" r="4" />
-                <path d="M6 20v-2a6 6 0 0 1 12 0v2" />
-            </svg>
-            <span class="font-bold text-gray-700">Administrador</span>
-            <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path d="M6 9l6 6 6-6" />
-            </svg>
+            <button id="userMenuBtn" class="flex items-center gap-2 focus:outline-none">
+                <!-- Ícono usuario -->
+                <svg class="w-7 h-7 text-indigo-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <circle cx="12" cy="8" r="4" />
+                    <path d="M6 20v-2a6 6 0 0 1 12 0v2" />
+                </svg>
+                <span class="font-bold text-gray-700">Administrador</span>
+                <!-- Flecha abajo -->
+                <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M6 9l6 6 6-6" />
+                </svg>
+            </button>
             <!-- Dropdown -->
-            <div id="userDropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg py-2 z-50 border border-gray-100">
+            <div id="userDropdown" class="hidden absolute right-0 top-full mt-1 w-48 bg-white rounded-xl shadow-lg py-2 z-50 border border-gray-100">
                 <a href="#" class="block px-5 py-2 text-gray-700 hover:bg-indigo-50">Perfil</a>
                 <a href="#" class="block px-5 py-2 text-gray-700 hover:bg-indigo-50">Configuración</a>
                 <div class="border-t border-gray-100 my-2"></div>
                 <a href="?logout=1" class="block px-5 py-2 text-rose-700 hover:bg-rose-50 font-semibold">Cerrar sesión</a>
             </div>
         </div>
+
+
     </header>
 
 
