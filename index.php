@@ -228,33 +228,177 @@ endif; ?>
             <?php
 
             if ($page == 'dashboard') { ?>
-                <!-- Aquí va el dashboard -->
+                <!-- DASHBOARD ETNA SGSI MEJORADO -->
                 <h1 class="text-3xl font-bold text-indigo-900 mb-6">Dashboard SGSI ETNA</h1>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-                    <div class="bg-white rounded-xl shadow-lg p-6">
-                        <div class="text-3xl font-bold text-indigo-700">8</div>
-                        <div class="text-gray-600 mt-2">Activos Críticos</div>
+
+                <!-- Indicadores con tendencia -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                    <!-- Activos Críticos -->
+                    <div class="bg-white rounded-xl shadow-lg p-6 flex items-center gap-4">
+                        <div class="flex items-center justify-center w-14 h-14 rounded-xl bg-indigo-50">
+                            <svg class="w-8 h-8 text-indigo-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <rect x="3" y="13" width="18" height="8" rx="2" />
+                                <circle cx="7.5" cy="17.5" r="1.5" />
+                                <circle cx="16.5" cy="17.5" r="1.5" />
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-bold text-indigo-700 flex items-center gap-2">
+                                8
+                                <span class="text-sm text-green-500 flex items-center">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <path d="M5 12l5 5l10-10" />
+                                    </svg>
+                                    +2
+                                </span>
+                            </div>
+                            <div class="text-gray-600 mt-1">Activos Críticos</div>
+                        </div>
                     </div>
-                    <div class="bg-white rounded-xl shadow-lg p-6">
-                        <div class="text-3xl font-bold text-rose-700">3</div>
-                        <div class="text-gray-600 mt-2">Riesgos Críticos</div>
+                    <!-- Riesgos Críticos -->
+                    <div class="bg-white rounded-xl shadow-lg p-6 flex items-center gap-4">
+                        <div class="flex items-center justify-center w-14 h-14 rounded-xl bg-rose-50">
+                            <svg class="w-8 h-8 text-rose-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3l-8.47-14.14a2 2 0 0 0-3.42 0z" />
+                                <line x1="12" y1="9" x2="12" y2="13" />
+                                <line x1="12" y1="17" x2="12.01" y2="17" />
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-bold text-rose-700 flex items-center gap-2">
+                                3
+                                <span class="text-sm text-rose-500 flex items-center">
+                                    <svg class="w-4 h-4 rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <path d="M5 12l5 5l10-10" />
+                                    </svg>
+                                    -1
+                                </span>
+                            </div>
+                            <div class="text-gray-600 mt-1">Riesgos Críticos</div>
+                        </div>
                     </div>
-                    <div class="bg-white rounded-xl shadow-lg p-6">
-                        <div class="text-3xl font-bold text-green-600">5</div>
-                        <div class="text-gray-600 mt-2">Controles Implementados</div>
+                    <!-- Controles Implementados -->
+                    <div class="bg-white rounded-xl shadow-lg p-6 flex items-center gap-4">
+                        <div class="flex items-center justify-center w-14 h-14 rounded-xl bg-green-50">
+                            <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="M8 12l2 2l4-4" />
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-bold text-green-600">5</div>
+                            <div class="text-gray-600 mt-1">Controles Implementados</div>
+                        </div>
+                    </div>
+                    <!-- Usuarios activos -->
+                    <div class="bg-white rounded-xl shadow-lg p-6 flex items-center gap-4">
+                        <div class="flex items-center justify-center w-14 h-14 rounded-xl bg-indigo-100">
+                            <svg class="w-8 h-8 text-indigo-800" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M17 21v-2a4 4 0 0 0-3-3.87M7 21v-2a4 4 0 0 1 3-3.87M9 7a4 4 0 1 1 8 0a4 4 0 0 1-8 0Z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-bold text-indigo-800">12</div>
+                            <div class="text-gray-600 mt-1">Usuarios activos hoy</div>
+                        </div>
                     </div>
                 </div>
-                <div class="bg-white p-6 rounded-xl shadow-xl">
-                    <h2 class="text-xl font-bold text-indigo-900 mb-4">Últimas Alertas</h2>
-                    <ul class="space-y-3">
-                        <li class="flex items-center"><span class="w-3 h-3 rounded-full bg-rose-500 mr-2"></span> Incidente de seguridad reportado en SAP ERP</li>
-                        <li class="flex items-center"><span class="w-3 h-3 rounded-full bg-yellow-400 mr-2"></span> Backup completado exitosamente</li>
-                        <li class="flex items-center"><span class="w-3 h-3 rounded-full bg-green-500 mr-2"></span> Capacitación completada por 12 usuarios</li>
-                    </ul>
+
+                <!-- Cumplimiento & gráfico de tendencia -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <!-- Cumplimiento Políticas -->
+                    <div class="bg-white rounded-xl shadow-lg p-6">
+                        <div class="flex items-center gap-2 mb-2">
+                            <svg class="w-7 h-7 text-indigo-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M5 12l5 5l10-10" />
+                            </svg>
+                            <span class="text-lg font-semibold text-indigo-900">Cumplimiento de políticas</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="flex-1">
+                                <div class="h-3 bg-indigo-100 rounded-xl overflow-hidden">
+                                    <div class="bg-indigo-700 h-3 rounded-xl transition-all" style="width: 82%;"></div>
+                                </div>
+                                <div class="mt-2 text-xs text-gray-500">82% de políticas cumplen con los controles establecidos</div>
+                            </div>
+                            <span class="ml-4 text-2xl font-bold text-indigo-700">82%</span>
+                        </div>
+                    </div>
+                    <!-- Mini gráfico de barras (falso, solo visual) -->
+                    <div class="bg-white rounded-xl shadow-lg p-6">
+                        <div class="flex items-center gap-2 mb-2">
+                            <svg class="w-7 h-7 text-rose-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <rect x="3" y="13" width="18" height="8" rx="2" />
+                            </svg>
+                            <span class="text-lg font-semibold text-rose-700">Incidentes reportados</span>
+                        </div>
+                        <div class="flex gap-1 h-12 items-end">
+                            <div class="w-4 bg-rose-200 rounded-xl" style="height:40%"></div>
+                            <div class="w-4 bg-rose-300 rounded-xl" style="height:70%"></div>
+                            <div class="w-4 bg-rose-400 rounded-xl" style="height:50%"></div>
+                            <div class="w-4 bg-rose-500 rounded-xl" style="height:90%"></div>
+                            <div class="w-4 bg-rose-400 rounded-xl" style="height:60%"></div>
+                            <div class="w-4 bg-rose-300 rounded-xl" style="height:30%"></div>
+                        </div>
+                        <div class="mt-2 text-xs text-gray-500">Tendencia semanal de incidentes</div>
+                    </div>
                 </div>
+
+                <!-- Alertas y próximos vencimientos -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+                    <!-- Últimas Alertas -->
+                    <div class="bg-white p-6 rounded-xl shadow-xl">
+                        <h2 class="text-xl font-bold text-indigo-900 mb-4">Últimas Alertas</h2>
+                        <ul class="space-y-3">
+                            <li class="flex items-center"><span class="w-3 h-3 rounded-full bg-rose-500 mr-2"></span> Incidente de seguridad reportado en SAP ERP</li>
+                            <li class="flex items-center"><span class="w-3 h-3 rounded-full bg-yellow-400 mr-2"></span> Backup completado exitosamente</li>
+                            <li class="flex items-center"><span class="w-3 h-3 rounded-full bg-green-500 mr-2"></span> Capacitación completada por 12 usuarios</li>
+                        </ul>
+                    </div>
+                    <!-- Próximos vencimientos -->
+                    <div class="bg-white p-6 rounded-xl shadow-xl">
+                        <h2 class="text-xl font-bold text-rose-700 mb-4 flex items-center gap-2">
+                            <svg class="w-6 h-6 text-rose-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M8 7V3M16 7V3M4 11h16M4 19h16M4 15h16" />
+                            </svg>
+                            Próximos vencimientos
+                        </h2>
+                        <ul class="space-y-3">
+                            <li class="flex items-center"><span class="w-2.5 h-2.5 rounded-full bg-rose-400 mr-2"></span> Backup de SAP: <span class="ml-auto text-rose-700 font-semibold">07/07/2025</span></li>
+                            <li class="flex items-center"><span class="w-2.5 h-2.5 rounded-full bg-yellow-400 mr-2"></span> Cambio de contraseñas: <span class="ml-auto text-yellow-700 font-semibold">10/07/2025</span></li>
+                            <li class="flex items-center"><span class="w-2.5 h-2.5 rounded-full bg-indigo-400 mr-2"></span> Revisión de usuarios: <span class="ml-auto text-indigo-700 font-semibold">15/07/2025</span></li>
+                        </ul>
+                    </div>
+                </div>
+
             <?php
             } elseif ($page == 'activos') { ?>
                 <h1 class="text-2xl font-bold text-indigo-900 mb-6">Gestión de Activos</h1>
+                <!-- Buscador bonito -->
+                <div class="flex items-center gap-3 mb-6 max-w-sm">
+                    <div class="relative flex-1">
+                        <input
+                            type="text"
+                            placeholder="Buscar activo, tipo, ubicación..."
+                            class="pl-11 pr-4 py-2 rounded-xl border border-gray-300 shadow focus:outline-none focus:ring-2 focus:ring-indigo-200 w-full bg-white text-gray-800 transition"
+                            id="search-activos" />
+                        <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-indigo-600">
+                            <!-- Icono lupa -->
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <circle cx="11" cy="11" r="8" />
+                                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                            </svg>
+                        </span>
+                    </div>
+                    <button
+                        onclick="document.getElementById('search-activos').value=''; filtrarTablaActivos();"
+                        class="bg-gray-100 hover:bg-indigo-100 border border-gray-200 text-indigo-700 font-bold py-2 px-4 rounded-xl transition flex items-center gap-1">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                        Limpiar
+                    </button>
+                </div>
                 <div class="overflow-x-auto w-full">
                     <table class="min-w-full bg-white shadow-md rounded-xl">
                         <thead class="bg-indigo-900 text-white">
@@ -298,6 +442,31 @@ endif; ?>
             <?php
             } elseif ($page == 'riesgos') { ?>
                 <h1 class="text-2xl font-bold text-indigo-900 mb-6">Gestión de Riesgos</h1>
+                <!-- Buscador bonito -->
+                <div class="flex items-center gap-3 mb-6 max-w-sm">
+                    <div class="relative flex-1">
+                        <input
+                            type="text"
+                            placeholder="Buscar activo, tipo, ubicación..."
+                            class="pl-11 pr-4 py-2 rounded-xl border border-gray-300 shadow focus:outline-none focus:ring-2 focus:ring-indigo-200 w-full bg-white text-gray-800 transition"
+                            id="search-activos" />
+                        <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-indigo-600">
+                            <!-- Icono lupa -->
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <circle cx="11" cy="11" r="8" />
+                                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                            </svg>
+                        </span>
+                    </div>
+                    <button
+                        onclick="document.getElementById('search-activos').value=''; filtrarTablaActivos();"
+                        class="bg-gray-100 hover:bg-indigo-100 border border-gray-200 text-indigo-700 font-bold py-2 px-4 rounded-xl transition flex items-center gap-1">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                        Limpiar
+                    </button>
+                </div>
                 <div class="overflow-x-auto w-full">
                     <table class="min-w-full bg-white shadow-md rounded-xl">
                         <thead class="bg-rose-800 text-white">
@@ -336,6 +505,7 @@ endif; ?>
             <?php
             } elseif ($page == 'incidentes') { ?>
                 <h1 class="text-2xl font-bold text-indigo-900 mb-6">Registro de Incidentes</h1>
+
                 <div class="mb-6">
                     <form class="bg-white p-6 rounded-xl shadow-md flex flex-col md:flex-row gap-4">
                         <input type="text" placeholder="Área" class="border rounded-lg px-4 py-2 flex-1" value="Finanzas">
@@ -444,6 +614,31 @@ endif; ?>
             <?php
             } elseif ($page == 'usuarios') { ?>
                 <h1 class="text-2xl font-bold text-indigo-900 mb-6">Gestión de Usuarios</h1>
+                <!-- Buscador bonito -->
+                <div class="flex items-center gap-3 mb-6 max-w-sm">
+                    <div class="relative flex-1">
+                        <input
+                            type="text"
+                            placeholder="Buscar activo, tipo, ubicación..."
+                            class="pl-11 pr-4 py-2 rounded-xl border border-gray-300 shadow focus:outline-none focus:ring-2 focus:ring-indigo-200 w-full bg-white text-gray-800 transition"
+                            id="search-activos" />
+                        <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-indigo-600">
+                            <!-- Icono lupa -->
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <circle cx="11" cy="11" r="8" />
+                                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                            </svg>
+                        </span>
+                    </div>
+                    <button
+                        onclick="document.getElementById('search-activos').value=''; filtrarTablaActivos();"
+                        class="bg-gray-100 hover:bg-indigo-100 border border-gray-200 text-indigo-700 font-bold py-2 px-4 rounded-xl transition flex items-center gap-1">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                        Limpiar
+                    </button>
+                </div>
                 <div class="overflow-x-auto">
                     <table class="min-w-full bg-white shadow-md rounded-xl">
                         <thead class="bg-indigo-900 text-white">
@@ -753,6 +948,18 @@ endif; ?>
         });
         // Abre la primera al cargar
         setTimeout(() => document.querySelector('#policies-accordion .policy-toggle').click(), 50);
+
+        // Filtro para la tabla de activos
+        document.getElementById('search-activos').addEventListener('input', filtrarTablaActivos);
+
+        function filtrarTablaActivos() {
+            let search = document.getElementById('search-activos').value.toLowerCase();
+            let rows = document.querySelectorAll('table tbody tr');
+            rows.forEach(row => {
+                let text = row.innerText.toLowerCase();
+                row.style.display = text.includes(search) ? '' : 'none';
+            });
+        }
     </script>
 </body>
 
