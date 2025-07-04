@@ -80,24 +80,29 @@ endif; ?>
 <body class="bg-gray-100 min-h-screen">
 
     <!-- Header -->
-    <header class="bg-white text-white shadow-md p-4 flex items-center justify-between">
-        <div class="flex items-center">
-            <img src="https://www.etna.com.pe/wp-content/themes/hanan_etna/img/etna-slogan.png" alt="Logo ETNA" class="h-12 mr-4">
-            <span class="font-extrabold text-gray-300 text-2xl">SGSI</span>
+    <header class="bg-white shadow-md px-4 py-2 flex items-center justify-between w-full">
+        <!-- Botón hamburguesa (solo móvil) -->
+        <button id="menuBtn" class="mr-3 block md:hidden focus:outline-none">
+            <svg class="w-8 h-8 text-indigo-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+        </button>
+        <!-- Logo ETNA -->
+        <div class="flex items-center gap-2 flex-shrink-0">
+            <img src="https://www.etna.com.pe/wp-content/themes/hanan_etna/img/etna-slogan.png" alt="Logo ETNA" class="h-12 md:h-14 w-auto" />
+            <!-- “SGSI” visible solo en md+ -->
+
         </div>
-        <div class="relative inline-block text-left">
-            <button id="userMenuBtn" type="button" class="flex items-center gap-2 focus:outline-none">
-                <!-- User icon -->
-                <svg class="w-7 h-7 text-indigo-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <circle cx="12" cy="8" r="4" />
-                    <path d="M6 20v-2a6 6 0 0 1 12 0v2" />
-                </svg>
-                <span class="font-bold text-gray-500">Administrador</span>
-                <!-- Down arrow -->
-                <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path d="M6 9l6 6 6-6" />
-                </svg>
-            </button>
+        <!-- Usuario/derecha -->
+        <div class="relative flex items-center gap-2">
+            <svg class="w-7 h-7 text-indigo-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <circle cx="12" cy="8" r="4" />
+                <path d="M6 20v-2a6 6 0 0 1 12 0v2" />
+            </svg>
+            <span class="font-bold text-gray-700">Administrador</span>
+            <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M6 9l6 6 6-6" />
+            </svg>
             <!-- Dropdown -->
             <div id="userDropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg py-2 z-50 border border-gray-100">
                 <a href="#" class="block px-5 py-2 text-gray-700 hover:bg-indigo-50">Perfil</a>
@@ -108,9 +113,11 @@ endif; ?>
         </div>
     </header>
 
-    <div class="flex">
+
+
+    <div class="flex min-h-screen">
         <!-- Sidebar -->
-        <nav class="bg-white w-64 min-h-screen shadow-lg pt-8">
+        <nav id="sidebar" class="bg-white w-64 min-h-screen shadow-lg pt-8 md:static md:block hidden md:flex">
             <ul class="space-y-2">
                 <li>
                     <a href="/prototipo/dashboard"
@@ -208,8 +215,10 @@ endif; ?>
                 </li>
             </ul>
         </nav>
+        <!-- Overlay para móvil -->
+        <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-30 z-30 hidden md:hidden"></div>
         <!-- Main Content -->
-        <main class="flex-1 p-8">
+        <main class="flex-1 w-full p-4 md:p-8 ml-0 transition-all duration-300">
             <?php
 
             if ($page == 'dashboard') { ?>
@@ -240,8 +249,8 @@ endif; ?>
             <?php
             } elseif ($page == 'activos') { ?>
                 <h1 class="text-2xl font-bold text-indigo-900 mb-6">Gestión de Activos</h1>
-                <div class="overflow-x-auto">
-                    <table class="min-w-full bg-white shadow-md rounded-xl overflow-hidden">
+                <div class="overflow-x-auto w-full">
+                    <table class="min-w-full bg-white shadow-md rounded-xl">
                         <thead class="bg-indigo-900 text-white">
                             <tr>
                                 <th class="py-3 px-4 text-left">ID</th>
@@ -283,8 +292,8 @@ endif; ?>
             <?php
             } elseif ($page == 'riesgos') { ?>
                 <h1 class="text-2xl font-bold text-indigo-900 mb-6">Gestión de Riesgos</h1>
-                <div class="overflow-x-auto">
-                    <table class="min-w-full bg-white shadow-md rounded-xl overflow-hidden">
+                <div class="overflow-x-auto w-full">
+                    <table class="min-w-full bg-white shadow-md rounded-xl">
                         <thead class="bg-rose-800 text-white">
                             <tr>
                                 <th class="py-3 px-4 text-left">ID</th>
@@ -457,24 +466,126 @@ endif; ?>
                 </div>
             <?php
             } elseif ($page == 'reportes') { ?>
-                <h1 class="text-2xl font-bold text-indigo-900 mb-6">Reportes</h1>
-                <div class="bg-white p-6 rounded-xl shadow-md">
-                    <ul class="list-disc pl-6 space-y-2">
-                        <li><a class="text-indigo-700 underline hover:text-indigo-900" href="#">Reporte de incidentes</a></li>
-                        <li><a class="text-indigo-700 underline hover:text-indigo-900" href="#">Reporte de activos</a></li>
-                        <li><a class="text-indigo-700 underline hover:text-indigo-900" href="#">Reporte de usuarios</a></li>
-                    </ul>
+                <h1 class="text-2xl font-bold text-indigo-900 mb-6 flex items-center gap-2">
+                    <svg class="w-7 h-7 text-indigo-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M3 3h18v4H3V3zm0 6h18v12H3V9zm4 4h2v4H7v-4zm4 0h2v4h-2v-4zm4 0h2v4h-2v-4z" />
+                    </svg>
+                    Reportes
+                </h1>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Reporte de Incidentes -->
+                    <a href="#" class="group block bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow border border-gray-100 hover:border-indigo-300 p-6 cursor-pointer">
+                        <div class="flex items-center gap-3 mb-2">
+                            <div class="bg-rose-100 rounded-full p-2">
+                                <svg class="w-7 h-7 text-rose-600 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M12 9v2m0 4h.01M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z" />
+                                </svg>
+                            </div>
+                            <span class="font-bold text-lg text-rose-700">Incidentes</span>
+                        </div>
+                        <div class="text-gray-700 mb-3 text-sm">
+                            Reporte detallado de incidentes de seguridad, estados y análisis de tendencias.
+                        </div>
+                        <span class="inline-block bg-rose-100 text-rose-600 text-xs font-semibold px-3 py-1 rounded-full group-hover:bg-rose-600 group-hover:text-white transition">Ver reporte</span>
+                    </a>
+                    <!-- Reporte de Activos -->
+                    <a href="#" class="group block bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow border border-gray-100 hover:border-green-300 p-6 cursor-pointer">
+                        <div class="flex items-center gap-3 mb-2">
+                            <div class="bg-green-100 rounded-full p-2">
+                                <svg class="w-7 h-7 text-green-600 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <rect x="3" y="13" width="18" height="8" rx="2" />
+                                    <circle cx="7.5" cy="17.5" r="1.5" />
+                                    <circle cx="16.5" cy="17.5" r="1.5" />
+                                </svg>
+                            </div>
+                            <span class="font-bold text-lg text-green-700">Activos</span>
+                        </div>
+                        <div class="text-gray-700 mb-3 text-sm">
+                            Inventario actualizado de activos críticos, asignaciones y estado de los equipos.
+                        </div>
+                        <span class="inline-block bg-green-100 text-green-700 text-xs font-semibold px-3 py-1 rounded-full group-hover:bg-green-600 group-hover:text-white transition">Ver reporte</span>
+                    </a>
+                    <!-- Reporte de Usuarios -->
+                    <a href="#" class="group block bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow border border-gray-100 hover:border-indigo-400 p-6 cursor-pointer">
+                        <div class="flex items-center gap-3 mb-2">
+                            <div class="bg-indigo-100 rounded-full p-2">
+                                <svg class="w-7 h-7 text-indigo-600 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M17 21v-2a4 4 0 0 0-3-3.87M7 21v-2a4 4 0 0 1 3-3.87M9 7a4 4 0 1 1 8 0a4 4 0 0 1-8 0Z" />
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87M1 21v-2a4 4 0 0 1 3-3.87" />
+                                </svg>
+                            </div>
+                            <span class="font-bold text-lg text-indigo-700">Usuarios</span>
+                        </div>
+                        <div class="text-gray-700 mb-3 text-sm">
+                            Análisis de usuarios, roles, accesos y actividad reciente en el sistema.
+                        </div>
+                        <span class="inline-block bg-indigo-100 text-indigo-700 text-xs font-semibold px-3 py-1 rounded-full group-hover:bg-indigo-600 group-hover:text-white transition">Ver reporte</span>
+                    </a>
                 </div>
+
             <?php
             } elseif ($page == 'alertas') { ?>
-                <h1 class="text-2xl font-bold text-indigo-900 mb-6">Alertas y Notificaciones</h1>
+                <h1 class="text-2xl font-bold text-indigo-900 mb-6 flex items-center gap-2">
+                    <svg class="w-7 h-7 text-indigo-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9" />
+                        <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+                    </svg>
+                    Alertas y Notificaciones
+                </h1>
+
                 <div class="bg-white p-6 rounded-xl shadow-md">
                     <ul class="space-y-4">
-                        <li class="flex items-center"><span class="w-4 h-4 bg-rose-500 rounded-full mr-2"></span> Intento de acceso indebido en SAP - 03/07/2025</li>
-                        <li class="flex items-center"><span class="w-4 h-4 bg-yellow-500 rounded-full mr-2"></span> Backup finalizado - 02/07/2025</li>
-                        <li class="flex items-center"><span class="w-4 h-4 bg-green-500 rounded-full mr-2"></span> Usuario registrado exitosamente - 01/07/2025</li>
+                        <!-- Alerta crítica -->
+                        <li class="flex items-center gap-3 group transition">
+                            <span class="relative flex h-5 w-5">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-5 w-5 bg-rose-500"></span>
+                            </span>
+                            <div>
+                                <span class="font-semibold text-rose-700 group-hover:underline transition">Intento de acceso indebido en SAP</span>
+                                <span class="ml-2 text-xs bg-rose-100 text-rose-700 px-2 py-0.5 rounded-full font-semibold">Crítico</span>
+                                <span class="ml-3 text-gray-400 text-xs">03/07/2025</span>
+                            </div>
+                            <svg class="w-5 h-5 ml-auto text-rose-500 opacity-60 group-hover:text-rose-700 transition" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M12 9v2m0 4h.01M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z" />
+                            </svg>
+                        </li>
+                        <!-- Alerta advertencia -->
+                        <li class="flex items-center gap-3 group transition">
+                            <span class="relative flex h-5 w-5">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-5 w-5 bg-yellow-500"></span>
+                            </span>
+                            <div>
+                                <span class="font-semibold text-yellow-700 group-hover:underline transition">Backup finalizado</span>
+                                <span class="ml-2 text-xs bg-yellow-100 text-yellow-700 px-2 py-0.5 rounded-full font-semibold">Advertencia</span>
+                                <span class="ml-3 text-gray-400 text-xs">02/07/2025</span>
+                            </div>
+                            <svg class="w-5 h-5 ml-auto text-yellow-500 opacity-60 group-hover:text-yellow-700 transition" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="M12 8v4m0 4h.01" />
+                            </svg>
+                        </li>
+                        <!-- Alerta éxito -->
+                        <li class="flex items-center gap-3 group transition">
+                            <span class="relative flex h-5 w-5">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-5 w-5 bg-green-500"></span>
+                            </span>
+                            <div>
+                                <span class="font-semibold text-green-700 group-hover:underline transition">Usuario registrado exitosamente</span>
+                                <span class="ml-2 text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-semibold">Éxito</span>
+                                <span class="ml-3 text-gray-400 text-xs">01/07/2025</span>
+                            </div>
+                            <svg class="w-5 h-5 ml-auto text-green-500 opacity-60 group-hover:text-green-700 transition" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="M8 12l2 2 4-4" />
+                            </svg>
+                        </li>
                     </ul>
                 </div>
+
             <?php
             } else {
                 echo '<h2 class="text-xl font-bold text-rose-700">Página no encontrada</h2>';
