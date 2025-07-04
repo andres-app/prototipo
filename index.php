@@ -55,7 +55,7 @@ if (!isset($_SESSION['logueado'])):
                     <input type="password" class="w-full border rounded-lg px-4 py-2" value="********" readonly>
                 </div>
                 <div class="mb-4">
-                    <label class="block mb-1">Código MFA (simulado)</label>
+                    <label class="block mb-1">Código MFA</label>
                     <input type="text" class="w-full border rounded-lg px-4 py-2" placeholder="123456">
                 </div>
                 <button class="w-full bg-indigo-700 text-white py-2 rounded-lg font-bold hover:bg-indigo-800 transition">Ingresar</button>
