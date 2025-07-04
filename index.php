@@ -1,7 +1,15 @@
 <?php
 session_start();
 
-$page = $_GET['page'] ?? 'dashboard';
+if (isset($_GET['url']) && !empty($_GET['url'])) {
+    $ruta = explode('/', trim($_GET['url'], '/'));
+    $page = $ruta[0]; // ejemplo: riesgos
+} elseif (isset($_GET['page'])) {
+    $page = $_GET['page'];
+} else {
+    $page = 'dashboard';
+}
+
 
 // Acción de login (simulada)
 if (isset($_POST['action']) && $_POST['action'] === 'login') {
@@ -105,7 +113,7 @@ endif; ?>
         <nav class="bg-white w-64 min-h-screen shadow-lg pt-8">
             <ul class="space-y-2">
                 <li>
-                    <a href="?page=dashboard"
+                    <a href="/prototipo/dashboard"
                         class="flex items-center px-6 py-3 font-semibold gap-3 transition
                <?php echo ($page == 'dashboard') ? 'bg-indigo-100 text-indigo-700 shadow rounded-l-xl' : 'hover:bg-indigo-50 text-gray-700'; ?>">
                         <svg class="w-5 h-5 text-indigo-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -115,7 +123,7 @@ endif; ?>
                     </a>
                 </li>
                 <li>
-                    <a href="?page=activos"
+                    <a href="/prototipo/activos"
                         class="flex items-center px-6 py-3 font-semibold gap-3 transition
                <?php echo ($page == 'activos') ? 'bg-indigo-100 text-indigo-700 shadow rounded-l-xl' : 'hover:bg-indigo-50 text-gray-700'; ?>">
                         <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -128,7 +136,7 @@ endif; ?>
                     </a>
                 </li>
                 <li>
-                    <a href="?page=riesgos"
+                    <a href="/prototipo/riesgos"
                         class="flex items-center px-6 py-3 font-semibold gap-3 transition
                <?php echo ($page == 'riesgos') ? 'bg-indigo-100 text-indigo-700 shadow rounded-l-xl' : 'hover:bg-indigo-50 text-gray-700'; ?>">
                         <svg class="w-5 h-5 text-rose-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -140,7 +148,7 @@ endif; ?>
                     </a>
                 </li>
                 <li>
-                    <a href="?page=incidentes"
+                    <a href="/prototipo/incidentes"
                         class="flex items-center px-6 py-3 font-semibold gap-3 transition
                <?php echo ($page == 'incidentes') ? 'bg-indigo-100 text-indigo-700 shadow rounded-l-xl' : 'hover:bg-indigo-50 text-gray-700'; ?>">
                         <svg class="w-5 h-5 text-red-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -151,7 +159,7 @@ endif; ?>
                     </a>
                 </li>
                 <li>
-                    <a href="?page=politicas"
+                    <a href="/prototipo/politicas"
                         class="flex items-center px-6 py-3 font-semibold gap-3 transition
                <?php echo ($page == 'politicas') ? 'bg-indigo-100 text-indigo-700 shadow rounded-l-xl' : 'hover:bg-indigo-50 text-gray-700'; ?>">
                         <svg class="w-5 h-5 text-yellow-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -165,7 +173,7 @@ endif; ?>
                     </a>
                 </li>
                 <li>
-                    <a href="?page=usuarios"
+                    <a href="/prototipo/usuarios"
                         class="flex items-center px-6 py-3 font-semibold gap-3 transition
                <?php echo ($page == 'usuarios') ? 'bg-indigo-100 text-indigo-700 shadow rounded-l-xl' : 'hover:bg-indigo-50 text-gray-700'; ?>">
                         <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -176,7 +184,7 @@ endif; ?>
                     </a>
                 </li>
                 <li>
-                    <a href="?page=reportes"
+                    <a href="/prototipo/reportes"
                         class="flex items-center px-6 py-3 font-semibold gap-3 transition
                <?php echo ($page == 'reportes') ? 'bg-indigo-100 text-indigo-700 shadow rounded-l-xl' : 'hover:bg-indigo-50 text-gray-700'; ?>">
                         <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -188,7 +196,7 @@ endif; ?>
                     </a>
                 </li>
                 <li>
-                    <a href="?page=alertas"
+                    <a href="/prototipo/alertas"
                         class="flex items-center px-6 py-3 font-semibold gap-3 transition
                <?php echo ($page == 'alertas') ? 'bg-indigo-100 text-indigo-700 shadow rounded-l-xl' : 'hover:bg-indigo-50 text-gray-700'; ?>">
                         <svg class="w-5 h-5 text-indigo-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -203,7 +211,6 @@ endif; ?>
         <!-- Main Content -->
         <main class="flex-1 p-8">
             <?php
-            $page = $_GET['page'] ?? 'dashboard';
 
             if ($page == 'dashboard') { ?>
                 <!-- Aquí va el dashboard -->

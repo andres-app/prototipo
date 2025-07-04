@@ -1,0 +1,9 @@
+RewriteEngine On
+RewriteBase /prototipo/
+
+# Si no es archivo ni carpeta real...
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Redirige todo lo que NO sea archivo/carpeta a index.php?url=...
+RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
